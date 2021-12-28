@@ -1,23 +1,28 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package supermarket;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
+/**
+ *
+ * @author ASUS
+ */
 public class Seller extends javax.swing.JFrame {
-    public Seller() throws SQLException {
+
+    public Seller() {
         initComponents();
-        SelectSeller();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -34,13 +39,13 @@ public class Seller extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         Gendercb = new javax.swing.JComboBox<>();
         Editbtn = new javax.swing.JButton();
-        Deletebtn = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         AddBtn = new javax.swing.JButton();
-        ClrBtn = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        SellerTable = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
-        cross = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -106,13 +111,13 @@ public class Seller extends javax.swing.JFrame {
             }
         });
 
-        Deletebtn.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        Deletebtn.setForeground(new java.awt.Color(255, 153, 0));
-        Deletebtn.setText("Delete");
-        Deletebtn.setBorder(null);
-        Deletebtn.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 153, 0));
+        jButton3.setText("Delete");
+        jButton3.setBorder(null);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeletebtnActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -126,34 +131,32 @@ public class Seller extends javax.swing.JFrame {
             }
         });
 
-        ClrBtn.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        ClrBtn.setForeground(new java.awt.Color(255, 153, 0));
-        ClrBtn.setText("Clear");
-        ClrBtn.setBorder(null);
-        ClrBtn.addActionListener(new java.awt.event.ActionListener() {
+        jButton5.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 153, 0));
+        jButton5.setText("Clear");
+        jButton5.setBorder(null);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClrBtnActionPerformed(evt);
+                jButton5ActionPerformed(evt);
             }
         });
 
-        SellerTable.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
-        SellerTable.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
                 "ID", "NAME", "PASSWORD", "GENDER"
             }
         ));
-        SellerTable.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        SellerTable.setRowHeight(25);
-        SellerTable.setSelectionBackground(new java.awt.Color(255, 153, 51));
-        SellerTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SellerTableMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(SellerTable);
+        jTable1.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        jTable1.setRowHeight(25);
+        jTable1.setSelectionBackground(new java.awt.Color(255, 153, 51));
+        jScrollPane1.setViewportView(jTable1);
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 153, 0));
@@ -203,9 +206,9 @@ public class Seller extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addComponent(Editbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(Deletebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(ClrBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(189, 189, 189))
         );
         jPanel2Layout.setVerticalGroup(
@@ -234,9 +237,9 @@ public class Seller extends javax.swing.JFrame {
                 .addGap(64, 64, 64)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Editbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Deletebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AddBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ClrBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -244,12 +247,12 @@ public class Seller extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        cross.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        cross.setForeground(new java.awt.Color(255, 153, 51));
-        cross.setText("X");
-        cross.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 153, 51));
+        jButton2.setText("X");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crossActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -260,13 +263,13 @@ public class Seller extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cross, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(cross, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -287,35 +290,7 @@ public class Seller extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
      Connection con =null;
      PreparedStatement pst=null;
-     ResultSet rs=null;
-     public void SelectSeller() throws SQLException {
-        try {
-            int c;
-            Class.forName("com.mysql.cj.jdbc.Driver");  
-            con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost/market","root","root");
-            pst=con.prepareStatement("select * from  sellertbl");
-            ResultSet rs = pst.executeQuery();
-            ResultSetMetaData rad = rs.getMetaData();
-            
-            c = rad.getColumnCount();
-            DefaultTableModel DF = (DefaultTableModel)SellerTable.getModel();
-            DF.setRowCount(0);        
-            while(rs.next())
-            {
-                Vector v2 = new Vector();
-                for(int i = 1; i<=c; i++)
-                {
-                    v2.add(rs.getString("Selid"));
-                    v2.add(rs.getString("SelName"));
-                    v2.add(rs.getString("SelPassl"));
-                    v2.add(rs.getString("Selgen"));
-                }
-                DF.addRow(v2);     
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Seller.class.getName()).log(Level.SEVERE, null, ex);
-        }
-     } 
+     
     private void SelIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SelIdActionPerformed
@@ -330,83 +305,11 @@ public class Seller extends javax.swing.JFrame {
 
     private void EditbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditbtnActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel D1 = (DefaultTableModel)SellerTable.getModel();
-        int selectIndex=SellerTable.getSelectedRow();
-            String id=(D1.getValueAt(selectIndex,0).toString());
-            int Id = Integer.valueOf(SelId.getText());
-            String name=Selname.getText();
-            String pass=Selpass.getText();
-            String gender= Gendercb.getSelectedItem().toString();
-            
-           int dial_res=JOptionPane.showConfirmDialog(null,"Do you want to Edit the selected data?","Warning",JOptionPane.YES_NO_OPTION);
-           if(dial_res==JOptionPane.YES_OPTION){
-                 try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost/market","root","root");
-                pst = con.prepareStatement("update sellertbl set SelName=?,SelPassl=?,Selgen=? where Selid=?");
-              
-               // pst.setInt(1,Id);
-                pst.setString(1,name);
-                pst.setString(2,pass);
-                pst.setString(3,gender);
-                pst.setString(4,id);
-                 int k=pst.executeUpdate();
-                              if(k==1){
-                                        JOptionPane.showMessageDialog(null,"Data Updated");
-                                      //  SelId.setText("");
-                                        Selname.setText("");
-                                        Selpass.setText("");
-                                        Gendercb.setSelectedIndex(-1);
-                                        SelId.requestFocus();
-                                        SelectSeller();
-                                }
-                              else {
-                                        JOptionPane.showMessageDialog(this,"Not Updated");
-                              }
-                
-           }   catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(Seller.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        }
-
-        
     }//GEN-LAST:event_EditbtnActionPerformed
 
-    private void DeletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletebtnActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel D1 = (DefaultTableModel)SellerTable.getModel();
-        int selectIndex=SellerTable.getSelectedRow();
-        int id=Integer.parseInt(D1.getValueAt(selectIndex,0).toString());
-        
-           int dial_res=JOptionPane.showConfirmDialog(null,"Do you want to delete the selected data?","Warning",JOptionPane.YES_NO_OPTION);
-           if(dial_res==JOptionPane.YES_OPTION){
-                 try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost/market","root","root");
-                pst = con.prepareStatement("delete from sellertbl where Selid=?");
-                pst.setInt(1,id);
-                 int k=pst.executeUpdate();
-                              if(k==1){
-                                        JOptionPane.showMessageDialog(null,"Data deleted");
-                                        SelId.setText("");
-                                        Selname.setText("");
-                                        Selpass.setText("");
-                                        Gendercb.setSelectedIndex(-1);
-                                        SelId.requestFocus();
-                                        SelectSeller();
-                                }
-                              else {
-                                        JOptionPane.showMessageDialog(this,"Not deleted");
-                              }
-                
-           }   catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(Seller.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        }
-    
-    }//GEN-LAST:event_DeletebtnActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void AddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBtnActionPerformed
         // TODO add your handling code here:
@@ -426,12 +329,7 @@ public class Seller extends javax.swing.JFrame {
             pst.setString(4,gender);
             int k=pst.executeUpdate();
             if(k==1){
-                JOptionPane.showMessageDialog(null,"Table updated");
-                 SelId.setText("");
-                 Selname.setText("");
-                 Selpass.setText("");
-                 Gendercb.setSelectedIndex(-1);                 
-                 SelectSeller();
+                JOptionPane.showMessageDialog(null,"Table updated");      
             }
             else {
                 JOptionPane.showMessageDialog(this,"Table Not Updated");
@@ -440,38 +338,23 @@ public class Seller extends javax.swing.JFrame {
             Logger.getLogger(Seller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Seller.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+        }
+        
+        
+        
     }//GEN-LAST:event_AddBtnActionPerformed
 
-    private void ClrBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClrBtnActionPerformed
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-                                   SelId.setText("");
-                                   Selname.setText("");
-                                   Selpass.setText("");
-                                   Gendercb.setSelectedIndex(-1);
-                                   SelId.requestFocus();
-        
-    }//GEN-LAST:event_ClrBtnActionPerformed
+    }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void crossActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crossActionPerformed
-      // if(evt.getSource()== cross){
-           System.exit(0);
-    }//GEN-LAST:event_crossActionPerformed
-
-    private void SellerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SellerTableMouseClicked
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel d1 = (DefaultTableModel)SellerTable.getModel();
-        int selectIndex;
-        selectIndex = SellerTable.getSelectedRow();
-        //String bookno = d1.getValueAt(selectIndex, 0).toString();
-        SelId.setText(d1.getValueAt(selectIndex,0).toString());
-        Selname.setText(d1.getValueAt(selectIndex,1).toString());
-        Selpass.setText(d1.getValueAt(selectIndex,2).toString());
-        Gendercb.setSelectedItem(d1.getValueAt(selectIndex,3).toString());
-        AddBtn.setEnabled(false);  
-        
-    }//GEN-LAST:event_SellerTableMouseClicked
+    }//GEN-LAST:event_jButton2ActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -499,26 +382,21 @@ public class Seller extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new Seller().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(Seller.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new Seller().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddBtn;
-    private javax.swing.JButton ClrBtn;
-    private javax.swing.JButton Deletebtn;
     private javax.swing.JButton Editbtn;
     private javax.swing.JComboBox<String> Gendercb;
     private javax.swing.JTextField SelId;
-    private javax.swing.JTable SellerTable;
     private javax.swing.JTextField Selname;
     private javax.swing.JTextField Selpass;
-    private javax.swing.JButton cross;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -528,5 +406,6 @@ public class Seller extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
